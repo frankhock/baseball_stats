@@ -1,4 +1,4 @@
-# BaseballStats
+# Baseball Stats
 
 TODO: Write a gem description
 
