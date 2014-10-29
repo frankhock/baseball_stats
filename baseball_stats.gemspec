@@ -10,7 +10,7 @@ Gem::Specification.new do |spec|
   spec.email         = ["frank@reenhanced.com"]
   spec.summary       = "Online Baseball Stats"
   spec.description   = "Calculate Baseball Stats"
-  spec.homepage      = ""
+  spec.homepage      = "https://github.com/frankhock/baseball_stats"
   spec.license       = "MIT"
 
   spec.files         = `git ls-files -z`.split("\x0")
@@ -18,7 +18,11 @@ Gem::Specification.new do |spec|
   spec.test_files    = spec.files.grep(%r{^(test|spec|features)/})
   spec.require_paths = ["lib"]
 
+  spec.add_dependency "activerecord", "~> 4.1.6"
+  spec.add_dependency "active_record_migrations", "~> 4.1.6.1"
+  spec.add_dependency "sqlite3", "~> 1.3.9"
+
   spec.add_development_dependency "bundler", "~> 1.6"
   spec.add_development_dependency "rake"
-  spec.add_development_dependency 'rspec'
+  spec.add_development_dependency "rspec", "~> 3.1.0"
 end
