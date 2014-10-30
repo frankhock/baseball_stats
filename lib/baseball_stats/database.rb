@@ -5,14 +5,12 @@ require 'yaml'
 
 module BaseballStats::Database
 
-  DEFAULT_ENV = "development".freeze
-
   def self.config
     @@config = YAML::load(IO.read('config/database.yml'))
   end
 
   def self.env
-    @@env = ENV['APP_ENV'] || DEFAULT_ENV
+    @@env = ENV['APP_ENV'] || BaseballStats::ENV
   end
 
   def self.connection

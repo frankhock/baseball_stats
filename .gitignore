@@ -21,3 +21,5 @@ tmp
 *.a
 mkmf.log
 .ruby-gemset
+*.sqlite3
+log/*.log
