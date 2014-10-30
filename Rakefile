@@ -8,7 +8,6 @@ Dir.glob('lib/tasks/*.rake').each(&method(:import))
 RSpec::Core::RakeTask.new(:spec)
 
 ActiveRecordMigrations.configure do |c|
-  c.schema_format = :sql # default is :ruby
   c.yaml_config = 'config/database.yml'
 end
 
