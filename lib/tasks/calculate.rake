@@ -18,7 +18,7 @@ namespace :app do
   desc "Slugging percentage for all players on the Oakland A's in 2007"
   task :find_slugging_percentage do
     p "Slugging percentage for all players on the Oakland A's in 2007"
-    battings = BaseballStats::Batting.includes(:player).include_slugging_percentage.for_team('OAK').order('slugging_percentage DESC')
+    battings = BaseballStats::Batting.includes(:player).include_slugging_percentage.for_team('OAK').for_year(2007).order('slugging_percentage DESC')
     battings.each { |b| printf "%-20s %s\n", b.player.to_s, b.slugging_percentage }
   end
 
