@@ -1,6 +1,7 @@
 require 'rubygems'
 require 'active_record'
 require 'sqlite3'
+require 'squeel'
 
 require "baseball_stats/version"
 require 'baseball_stats/database'

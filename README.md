@@ -1,29 +1,13 @@
 # Baseball Stats
 
-TODO: Write a gem description
+Demo App for calculating baseball stats
 
 ## Installation
 
-Add this line to your application's Gemfile:
+Install Gem:
 
-    gem 'baseball_stats'
-
-And then execute:
-
-    $ bundle
-
-Or install it yourself as:
-
-    $ gem install baseball_stats
-
-## Usage
-
-TODO: Write usage instructions here
-
-## Contributing
-
-1. Fork it ( https://github.com/[my-github-username]/baseball_stats/fork )
-2. Create your feature branch (`git checkout -b my-new-feature`)
-3. Commit your changes (`git commit -am 'Add some feature'`)
-4. Push to the branch (`git push origin my-new-feature`)
-5. Create a new Pull Request
+1. `git clone https://github.com/frankhock/baseball_stats.git`
+2. `cd baseball_stats`
+3. `bundle`
+4. `bundle exec rake app:import_csv_data`
+5. `bundle exec rake app:calculate_stats`

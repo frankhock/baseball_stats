@@ -11,10 +11,29 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141030005305) do
+ActiveRecord::Schema.define(version: 20141030214249) do
+
+  create_table "battings", force: true do |t|
+    t.integer "player_id"
+    t.integer "year"
+    t.string  "league"
+    t.string  "team"
+    t.integer "g"
+    t.integer "at_bats"
+    t.integer "r"
+    t.integer "hits"
+    t.integer "doubles"
+    t.integer "triples"
+    t.integer "home_runs"
+    t.integer "runs_batted_in"
+    t.integer "sb"
+    t.integer "cs"
+  end
+
+  add_index "battings", ["player_id"], name: "index_battings_on_player_id"
 
   create_table "players", force: true do |t|
-    t.string  "player_id"
+    t.string  "uid"
     t.integer "birth_year"
     t.string  "first_name"
     t.string  "last_name"
