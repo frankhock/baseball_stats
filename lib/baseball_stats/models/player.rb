@@ -102,6 +102,28 @@ module BaseballStats
 
     end
 
+    def self.triple_crown_winner(year, league)
+      base_query  = BaseballStats::Batting
+                      .minimum_at_bats(400)
+                      .for_year(year)
+                      .where(league: league)
+
+      highest_batting_avg = base_query.include_average.order('average DESC').first
+      most_home_runs      = base_query.order(home_runs: :desc).first
+      most_rbis           = base_query.order(runs_batted_in: :desc).first
+
+      ids = [highest_batting_avg, most_home_runs, most_rbis].map(&:player_id)
+
+
+      winner_exists = ( ids.uniq.size == 1 )
+
+      if winner_exists
+        "#{highest_batting_avg.player}"
+      else
+        "(No winner)"
+      end
+    end
+
     #- Instance Methods - #
 
     def to_s

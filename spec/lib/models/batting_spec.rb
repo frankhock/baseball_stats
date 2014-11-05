@@ -57,4 +57,14 @@ describe BaseballStats::Batting do
     end
   end
 
+  describe '.minimum_at_bats' do
+    it 'filters battings who do not meet the minimum number of at_bats' do
+      batting1 = create(:batting, at_bats: 400)
+      batting2 = create(:batting, at_bats: 405)
+      batting3 = create(:batting, at_bats: 300)
+
+      expect(BaseballStats::Batting.minimum_at_bats(400)).to eq [batting1, batting2]
+    end
+  end
+
 end

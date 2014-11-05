@@ -11,7 +11,7 @@ describe BaseballStats::Player do
     expect(create(:player)).to be_valid
   end
 
-  describe 'Class Methods' do
+  context 'Class Methods' do
     let(:csv_file) { File.expand_path('spec/fixtures/bios.csv') }
 
     subject { BaseballStats::Player }
@@ -37,6 +37,26 @@ describe BaseballStats::Player do
         batting2_2010 = create(:batting, hits: 200, at_bats: 300, year: 2010, player: batting2_2009.player)
 
         expect(subject.with_most_improved_batting_average(2010)).to eq batting1_2010.player
+      end
+    end
+
+    describe '.triple_crown_winner' do
+        let!(:batting1)  { create(:batting, hits: 200, at_bats: 500, year: 2009, league: 'AL') }
+        let!(:batting2)  { create(:batting, home_runs: 200, year: 2009, at_bats: 500, league: 'AL', player: batting1.player) }
+        let!(:batting3)  { create(:batting, runs_batted_in: 200, year: 2009, at_bats: 500, league: 'AL', player: batting1.player) }
+
+      context 'when triple crown winner exists' do
+        it 'returns player name' do
+          expect(subject.triple_crown_winner(2009, 'AL')).to eq "#{batting1.player}"
+        end
+      end
+
+      context 'when triple crown winner does not exist' do
+        it 'returns no winner' do
+          batting4 = create(:batting, home_runs: 300, year: 2009, at_bats: 500, league: 'AL')
+
+          expect(subject.triple_crown_winner(2009, 'AL')).to eq "(No winner)"
+        end
       end
     end
 
