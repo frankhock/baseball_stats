@@ -114,7 +114,6 @@ module BaseballStats
 
       ids = [highest_batting_avg, most_home_runs, most_rbis].map(&:player_id)
 
-
       winner_exists = ( ids.uniq.size == 1 )
 
       if winner_exists
